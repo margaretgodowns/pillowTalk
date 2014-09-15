@@ -1,5 +1,8 @@
-<h1>Pillow Talk</h1>
+<div ng-controller = "mainCtrl">
 
+
+<h1>Pillow Talk</h1>
+<button ng-click = "logout()">LOGOUT</button>
 <h2>{{currentUser}}, let's chat</h2>
 
 <!-- list of users -->
@@ -8,12 +11,13 @@
   <ul ng-repeat = "user in users">
     <li>{{user.name}}</li>
   </ul>
+</div>
 
 <!-- convo box -->
 
 <div class = "convoBox">
-  <ul>
-    <li>{{user.name}}</li>
+  <ul ng-repeat = "message in messages">
+    <li>{{message.author}}</li>
     <li>{{message.content}}</li>
   </ul>
 
@@ -22,9 +26,11 @@
 <!-- text field -->
 
 <div class = "convoInput">
-  <form action="" ng-submit = "addConvo(submitConvo)">
-    <input type="text" ng-model="submitConvo.content" value="" placeholder = "write stuff here">
-
+  <form action="" ng-submit = "createMessage(newMessage)">
+    <!-- <input type = "text" ng-model = "newMessage.author" value = "{{currentUser}}"> -->
+    <input type="text" ng-model="newMessage.content" value="" placeholder = "write stuff here">
+<button type = "submit">Submit</button>
   </form>
 
+</div>
 </div>

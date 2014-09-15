@@ -1,34 +1,45 @@
 angular.module("pillowTalk")
-  .controller("mainCtrl", function($scope, $location, $log, $routeParams, $route, $cookies, $cookieStore, chatService) {
+  .controller("mainCtrl", function($scope, $location, $log, $routeParams, $route, $cookies, $cookieStore, $interval, chatService) {
 
-
-
+  $interval(function() {
+  chatService.getMessages().success(function(messages) {
+    $scope.messages = messages;
+  })
+  }, 500);
   chatService.getUsers().success(function(users) {
     $scope.users = users;
-  })
+  });
 
-  $scope.createUser = function(newUser) {
-    chatService.createUser(newUser);
-    $location.path('/chatroom');
+
+
+  $scope.logout = function() {
+
+    angular.forEach($scope.users, function(user) {
+      if($scope.currentUser === user.name) {
+        chatService.deleteUser(user._id)
+      }
+    });
+    $location.path("/");
+
+
+
   };
 
   $scope.$on("user:added", function() {
     $scope.currentUser = chatService.getCurrentUser.name;
   });
 
-  chatService.getMessages().success(function(messages) {
-    $scope.messages = messages;
-  })
+
 
   $scope.createMessage = function(newMessage) {
-    chatService.createMessage(newMessage);
-    $location.path('/chatroom');
+    var modifiedMsg = {
+      content: newMessage.content,
+      author: $scope.currentUser
+    };
+    chatService.createMessage(modifiedMsg);
   };
 
-//confused on current message
-  // $scope.$on("message:added", function() {
-  //   $scope.message = chatService.getMessage
-  // })
+
 
 
   });

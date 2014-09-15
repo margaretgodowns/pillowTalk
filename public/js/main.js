@@ -11,7 +11,7 @@ angular
 
     .when('/', {
       templateUrl: 'views/main.html',
-      controller: 'mainCtrl'
+      controller: 'homeCtrl'
       })
 
     .when('/chatroom', {

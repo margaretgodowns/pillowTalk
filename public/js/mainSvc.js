@@ -24,7 +24,14 @@ angular.module("pillowTalk")
       $http.post(usersCollectionUrl, newUser).then(function(response) {
 
         $rootScope.$broadcast('user:added');
+        return newUser;
+      });
+    };
 
+    var deleteUser = function(userId) {
+      $cookieStore.remove('currentUser');
+      $http.delete(usersCollectionUrl + "/" + userId).then(function(response) {
+        $rootScope.$broadcast('user:deleted');
       });
     };
 
@@ -37,21 +44,22 @@ angular.module("pillowTalk")
 
     //POST new Message to Messages
 
-    // var createMessage = function(newMessage) {
-    //   $http.post(messagesCollectionUrl, newMessage).then(function(response) {
-    //
-    //     $rootScope.$broadcast('message:added');
-    //   });
-    //
-    // };
+    var createMessage = function(newMessage) {
+      $http.post(messagesCollectionUrl, newMessage).then(function(response) {
+        
+        $rootScope.$broadcast('message:added');
+      });
+
+    };
 
 
     return{
       getUsers: getUsers,
       createUser: createUser,
+      deleteUser: deleteUser,
       getCurrentUser: getCurrentUser,
       getMessages: getMessages,
-      // createMessage: createMessage
+      createMessage: createMessage
 
     };
   });
