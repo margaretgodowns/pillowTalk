@@ -2,7 +2,6 @@
 
 angular
   .module('pillowTalk', [
-    'mainCtrl',
     'ngCookies',
     'ngRoute'
   ])

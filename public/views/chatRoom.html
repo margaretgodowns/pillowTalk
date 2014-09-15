@@ -1,6 +1,6 @@
 <h1>Pillow Talk</h1>
 
-<h2>{{user}}, let's chat</h2>
+<h2>{{currentUser}}, let's chat</h2>
 
 <!-- list of users -->
 
@@ -13,8 +13,8 @@
 
 <div class = "convoBox">
   <ul>
-    <li>{{convo.name}}</li>
-    <li>{{convo.content}}</li>
+    <li>{{user.name}}</li>
+    <li>{{message.content}}</li>
   </ul>
 
 </div>
@@ -23,7 +23,7 @@
 
 <div class = "convoInput">
   <form action="" ng-submit = "addConvo(submitConvo)">
-    <input type="button" ng-model="submitConvo.content" value="" placeholder = "write words ehre">
+    <input type="text" ng-model="submitConvo.content" value="" placeholder = "write stuff here">
 
   </form>
 

@@ -1,41 +1,57 @@
 'use strict';
 angular.module("pillowTalk")
-  .factory('mainSvc', function($route, $rootScope, $log, $http, $cookies, $cookieStore) {
+  .factory('chatService', function($rootScope, $http, $cookieStore) {
 
-    var createUser = function(userName) {
-      $cookieStore.put("name", userName);
-      $rootScope.$broadcast("user:created");
-      console.log("user:created");
-    };
 
-    var userName = $cookieStore.get("name");
 
-    var urlBaseConvo = "/api/collections/convo";
+    var messagesCollectionUrl = "/api/collections/convo";
+    var usersCollectionUrl = "api/collections/users";
+    var getCurrentUser = $cookieStore.get('currentuser');
 
-    var getConvo = function() {
-      return $http.get(urlBaseConvo);
-
-    };
-
-    var addConvo = function(convo) {
-      $cookieStore.post(urlBaseConvo, convo).success(function(response) {
-        $rootScope.$broadcast("convo:added");
-        $log.info("convo:added");
-      });
-
-    };
-
-    var urlBaseUsers = "api/collections/users";
+    //GET users
 
     var getUsers = function() {
-      return $http.get(urlBaseUsers);
-
+      return $http.get(usersCollectionUrl);
     };
 
+    //POST new User to Users
+
+    var createUser = function(newUser) {
+      if(getCurrentUser && getCurrentUser.name === newUser.name) return;
+
+      $cookieStore.put('currentuser', newUser);
+
+      $http.post(usersCollectionUrl, newUser).then(function(response) {
+
+        $rootScope.$broadcast('user:added');
+
+      });
+    };
+
+
+    //GET Messages
+
+    var getMessages = function() {
+      return $http.get(messagesCollectionUrl);
+    };
+
+    //POST new Message to Messages
+
+    // var createMessage = function(newMessage) {
+    //   $http.post(messagesCollectionUrl, newMessage).then(function(response) {
+    //
+    //     $rootScope.$broadcast('message:added');
+    //   });
+    //
+    // };
+
+
     return{
+      getUsers: getUsers,
       createUser: createUser,
-      getConvo: getConvo,
-      addConvo: addConvo,
-      getUsers: getUsers
-    }
-  })
+      getCurrentUser: getCurrentUser,
+      getMessages: getMessages,
+      // createMessage: createMessage
+
+    };
+  });
