@@ -1,0 +1,30 @@
+<h1>Pillow Talk</h1>
+
+<h2>{{user}}, let's chat</h2>
+
+<!-- list of users -->
+
+<div class = "users">
+  <ul ng-repeat = "user in users">
+    <li>{{user.name}}</li>
+  </ul>
+
+<!-- convo box -->
+
+<div class = "convoBox">
+  <ul>
+    <li>{{convo.name}}</li>
+    <li>{{convo.content}}</li>
+  </ul>
+
+</div>
+
+<!-- text field -->
+
+<div class = "convoInput">
+  <form action="" ng-submit = "addConvo(submitConvo)">
+    <input type="button" ng-model="submitConvo.content" value="" placeholder = "write words ehre">
+
+  </form>
+
+</div>
