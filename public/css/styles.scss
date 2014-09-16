@@ -1,20 +1,19 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
 
+}
 a {
   color: #00B7FF;
 }
 
 .convoBox{
-  width: 500px;
-  height: 500px;
+  width: 50%;
+  height: 75%;
   border: 2px solid black;
   float: right;
-  margin-top: -500px;
-}
-
-.convoBox ul li{
-  list-style-type: none;
+  overflow: hidden;
+  li{
+    list-style-type: none;
+  }
 }

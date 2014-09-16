@@ -4,6 +4,6 @@ angular.module("pillowTalk")
   $scope.createUser = function(newUser) {
   chatService.createUser(newUser);
   $location.path('/chatroom');
-  
+
 };
 });
