@@ -1,14 +1,26 @@
+// general styles
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-img: url("../images/pillowTalkHome.png");
+  background-image: url("../images/pillowTalkBackground.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 
 }
 a {
   color: #00B7FF;
 }
 
+.title{
+  font-family: 'Lato', sans-serif;
+  font-weight: lighter;
+  color: black;
+  font-size: 3em;
+}
 
+
+// chatroom styles
 
 .convoBox{
   width: 50%;

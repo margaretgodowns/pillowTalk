@@ -1,36 +1,40 @@
-<div ng-controller = "mainCtrl">
+<div ng-controller = "mainCtrl" class = "container">
+
+  <div class = "row">
 
 
-<h1>Pillow Talk</h1>
-<button ng-click = "logout()">LOGOUT</button>
-<h2>{{currentUser}}, let's chat</h2>
+    <h1 class = "title">PILLOW TALK</h1>
+    <button class = "btn btn-default" ng-click = "logout()">LOGOUT</button>
+    <h2>{{currentUser}}, let's chat</h2>
+  </div>
+  <!-- list of users -->
+  <div class = "row">
+    <div class = "users">
+      <ul ng-repeat = "user in users">
+        <li>{{user.name}}</li>
+      </ul>
+    </div>
+  </div>
+  <!-- convo box -->
+  <div class = "row">
+    <div class = "convoBox">
+      <ul ng-repeat = "message in messages">
+        <li>{{message.author}}</li>
+        <li>{{message.content}}</li>
+      </ul>
 
-<!-- list of users -->
+    </div>
+  </div>
 
-<div class = "users">
-  <ul ng-repeat = "user in users">
-    <li>{{user.name}}</li>
-  </ul>
-</div>
+  <!-- text field -->
+  <div class = "row">
+    <div class = "convoInput">
+      <form action="" ng-submit = "createMessage(newMessage)">
+        <!-- <input type = "text" ng-model = "newMessage.author" value = "{{currentUser}}"> -->
+        <input type="text" ng-model="newMessage.content" value="" placeholder = "write stuff here">
+        <button class = "btn btn-default" type = "submit">Submit</button>
+      </form>
 
-<!-- convo box -->
-
-<div class = "convoBox">
-  <ul ng-repeat = "message in messages">
-    <li>{{message.author}}</li>
-    <li>{{message.content}}</li>
-  </ul>
-
-</div>
-
-<!-- text field -->
-
-<div class = "convoInput">
-  <form action="" ng-submit = "createMessage(newMessage)">
-    <!-- <input type = "text" ng-model = "newMessage.author" value = "{{currentUser}}"> -->
-    <input type="text" ng-model="newMessage.content" value="" placeholder = "write stuff here">
-<button type = "submit">Submit</button>
-  </form>
-
-</div>
+    </div>
+  </div>
 </div>
