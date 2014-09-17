@@ -17,7 +17,7 @@ angular.module("pillowTalk")
     //POST new User to Users
 
     var createUser = function(newUser) {
-      if(getCurrentUser && getCurrentUser.name === newUser.name) return;
+      // if(getCurrentUser && getCurrentUser.name === newUser.name) return;
 
       $cookieStore.put('currentuser', newUser);
 
@@ -46,7 +46,7 @@ angular.module("pillowTalk")
 
     var createMessage = function(newMessage) {
       $http.post(messagesCollectionUrl, newMessage).then(function(response) {
-        
+
         $rootScope.$broadcast('message:added');
       });
 

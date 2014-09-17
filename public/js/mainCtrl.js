@@ -6,6 +6,7 @@ angular.module("pillowTalk")
     $scope.messages = messages;
   })
   }, 500);
+
   chatService.getUsers().success(function(users) {
     $scope.users = users;
   });
