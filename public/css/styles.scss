@@ -19,16 +19,36 @@ a {
   font-size: 3em;
 }
 
+.btn{
+  margin: 10px;
+}
+
 
 // chatroom styles
-
+.container{
+  background: white;
+  .logout{
+    float:right;
+  }
+  .users{
+    li{
+      list-style-type:none;
+    }
+  }
 .convoBox{
-  width: 50%;
-  height: 75%;
+
   border: 2px solid black;
-  float: right;
+  height: 400px;
   overflow: hidden;
+  margin: 20px;
+  ul{
+    .messageAuthor{
+      font-weight: bold;
+    }
   li{
     list-style-type: none;
+    display: inline-block;
   }
+}
+}
 }

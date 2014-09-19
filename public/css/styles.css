@@ -14,11 +14,22 @@ a {
   color: black;
   font-size: 3em; }
 
-.convoBox {
-  width: 50%;
-  height: 75%;
-  border: 2px solid black;
-  float: right;
-  overflow: hidden; }
-  .convoBox li {
+.btn {
+  margin: 10px; }
+
+.container {
+  background: white; }
+  .container .logout {
+    float: right; }
+  .container .users li {
     list-style-type: none; }
+  .container .convoBox {
+    border: 2px solid black;
+    height: 400px;
+    overflow: hidden;
+    margin: 20px; }
+    .container .convoBox ul .messageAuthor {
+      font-weight: bold; }
+    .container .convoBox ul li {
+      list-style-type: none;
+      display: inline-block; }

@@ -1,30 +1,47 @@
 <div ng-controller = "mainCtrl" class = "container">
 
-  <div class = "row">
+
+
+
+<div class="row">
+
 
 
     <h1 class = "title">PILLOW TALK</h1>
-    <button class = "btn btn-default" ng-click = "logout()">LOGOUT</button>
-    <h2>{{currentUser}}, let's chat</h2>
-  </div>
+    <button class = "btn btn-default logout" ng-click = "logout()">LOGOUT</button>
+
+</div>
+
+
+
+
+
   <!-- list of users -->
   <div class = "row">
+  <div class="col-md-4">
+
+
     <div class = "users">
       <ul ng-repeat = "user in users">
         <li>{{user.name}}</li>
       </ul>
     </div>
-  </div>
+
+</div>
+
   <!-- convo box -->
-  <div class = "row">
+  <div class="col-md-8">
+
     <div class = "convoBox">
       <ul ng-repeat = "message in messages">
-        <li>{{message.author}}</li>
+        <li class="messageAuthor">{{message.author}}:</li>
         <li>{{message.content}}</li>
       </ul>
 
     </div>
   </div>
+
+</div>
 
   <!-- text field -->
   <div class = "row">
